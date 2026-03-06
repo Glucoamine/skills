@@ -48,6 +48,40 @@ Add to `~/.openclaw/openclaw.json`:
 }
 ```
 
+### Use with OpenClaw cloud bots
+
+[KimiClaw](https://www.kimi.com/bot), [MaxClaw](https://agent.minimax.io/), and [Manus](https://manus.im) are cloud-hosted AI agents with ClawHub / Agent Skills support. Tell your cloud agent:
+
+> Install the minara skill from https://clawhub.com/skills/minara
+
+Or search and install from the skill library UI. The skill is available on [ClawHub](https://clawhub.ai) as `minara`. Once installed, the agent can run all Minara commands — no local CLI setup needed on cloud bots.
+
+| Cloud bot | Platform | How to install skill |
+|---|---|---|
+| **KimiClaw** | [kimi.com/bot](https://www.kimi.com/bot) | Skill Library → search "minara" → install, or ask the agent |
+| **MaxClaw** | [agent.minimax.io](https://agent.minimax.io/) | Ask the agent to install minara from ClawHub |
+| **Manus** | [manus.im](https://manus.im) | Skills tab → + Add → Import from GitHub → `https://github.com/Minara-AI/skills` |
+
+### Use with other AI clients
+
+The Minara skill also works with any AI client that supports custom instructions or tool use. Install the CLI first:
+
+```bash
+npm install -g minara && minara login
+```
+
+Then add the skill to your AI client:
+
+| Client | How to add |
+|---|---|
+| **Claude Desktop** | Settings → Projects → create a project → add `skills/minara/SKILL.md` as project knowledge |
+| **Claude Code** | Copy `SKILL.md` to your project's `.claude/` directory or add it via `/add-file` |
+| **Cursor** | Copy `SKILL.md` to `.cursor/rules/minara.md` in your workspace |
+| **ChatGPT** | Create a GPT → paste the contents of `SKILL.md` into the Instructions field |
+| **Windsurf** | Copy `SKILL.md` to `.windsurfrules/minara.md` in your workspace |
+
+The agent reads the skill instructions and can then run Minara CLI commands on your behalf when you ask about crypto trading, wallet operations, or market analysis.
+
 ### Get started
 
 Tell the OpenClaw agent:
