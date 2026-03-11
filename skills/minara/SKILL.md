@@ -70,6 +70,9 @@ Triggers: message mentions perps, perpetual, futures, long, short, leverage, mar
 | "analyze ETH long or short", "should I long BTC?", "AI perp analysis for SOL"             | `minara perps ask` — AI analysis with optional quick order   |
 | "enable AI autopilot for perps", "turn on autopilot trading", "manage autopilot strategy" | `minara perps autopilot`                                     |
 | "check my perp positions", "show my Hyperliquid positions"                                | `minara perps positions`                                     |
+| "close my perp position", "exit perps trade"                                              | `minara perps close` (interactive)                           |
+| "close all my perp positions", "exit all perps trades"                                    | `minara perps close --all`                                   |
+| "close BTC perp position", "exit ETH perps"                                               | `minara perps close --symbol <SYMBOL>`                       |
 | "set leverage to 10x for ETH perps"                                                       | `minara perps leverage`                                      |
 | "cancel my perp orders"                                                                   | `minara perps cancel`                                        |
 | "deposit USDC to perps account", "fund my Hyperliquid account"                            | `minara deposit perps` or `minara perps deposit -a <amount>` |
