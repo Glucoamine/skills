@@ -6,6 +6,7 @@
 set -euo pipefail
 
 MINARA_SKILL_REPO="${MINARA_SKILL_REPO:-https://github.com/Minara-AI/openclaw-skill.git}"
+CLAWHUB_SKILL_URL="${CLAWHUB_SKILL_URL:-https://clawhub.ai/lowesyang/minara}"
 OPENCLAW_DEFAULT_CONFIG_PATH="$HOME/.openclaw/openclaw.json"
 CONFIG_PATH="${OPENCLAW_CONFIG_PATH:-$OPENCLAW_DEFAULT_CONFIG_PATH}"
 SKILLS_DIR="${OPENCLAW_SKILLS_DIR:-$HOME/.openclaw/skills}"
@@ -146,20 +147,9 @@ mkdir -p "$SKILLS_DIR"
 
 SKILL_INSTALLED=false
 
-# Priority 1: clawhub CLI
-if [[ "$SKILL_INSTALLED" == false ]] && command -v clawhub &>/dev/null; then
-  echo "    Trying clawhub install..."
-  if clawhub install lowesyang/minara 2>/dev/null; then
-    echo "    Installed via clawhub"
-    SKILL_INSTALLED=true
-  else
-    echo "    clawhub install failed"
-  fi
-fi
-
-# Priority 2: download from ClawHub URL
+# Priority 1: download from ClawHub URL
 if [[ "$SKILL_INSTALLED" == false ]]; then
-  echo "    Trying download from ClawHub..."
+  echo "    Downloading from ClawHub..."
   if curl -fsSL "$CLAWHUB_SKILL_URL/archive/main.tar.gz" -o "$TMP_DIR/clawhub-minara.tar.gz" 2>/dev/null; then
     mkdir -p "$TMP_DIR/clawhub-minara"
     if tar -xzf "$TMP_DIR/clawhub-minara.tar.gz" -C "$TMP_DIR/clawhub-minara" --strip-components=1 2>/dev/null; then
@@ -172,14 +162,30 @@ if [[ "$SKILL_INSTALLED" == false ]]; then
     fi
   fi
   if [[ "$SKILL_INSTALLED" == false ]]; then
-    echo "    ClawHub download failed"
+    echo "    ClawHub download failed, trying fallback..."
   fi
 fi
 
-# Priority 3: fallback to GitHub
+# Priority 2: fallback to GitHub
 if [[ "$SKILL_INSTALLED" == false ]]; then
   echo "    Falling back to GitHub..."
-  _install_minara_from_git
+  if _install_minara_from_git; then
+    SKILL_INSTALLED=true
+  fi
+fi
+
+# Priority 3: clawhub CLI (if available)
+if [[ "$SKILL_INSTALLED" == false ]] && command -v clawhub &>/dev/null; then
+  echo "    Trying clawhub CLI..."
+  if clawhub install lowesyang/minara 2>/dev/null; then
+    echo "    Installed via clawhub CLI"
+    SKILL_INSTALLED=true
+  fi
+fi
+
+if [[ "$SKILL_INSTALLED" == false ]]; then
+  echo "Error: Failed to install Minara skill from all sources" >&2
+  exit 1
 fi
 
 # 3. Enable minara in openclaw.json
