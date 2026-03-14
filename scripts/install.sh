@@ -397,15 +397,19 @@ else
 fi
 echo "============================================"
 echo ""
-command -v minara &>/dev/null && echo "  minara CLI: $(minara --version 2>/dev/null || echo 'ok')"
-echo "  skill dir:  $SKILLS_DIR/minara"
-echo "  config:     $CONFIG_PATH"
+command -v minara &>/dev/null && echo "  CLI version: $(minara --version 2>/dev/null || echo 'ok')"
+echo "  Skill version: v$(_skill_version "$SKILLS_DIR/minara")"
+if [[ "$ALREADY_LOGGED_IN" == true ]] || [[ "${LOGIN_EXIT:-1}" -eq 0 ]]; then
+  echo "  Logged in: yes"
+fi
 echo ""
-echo "  Try these next:"
-echo '    "What are the top DeFi projects on Solana right now?"'
-echo '    "Is NVDA still a good buy after the latest earnings?"'
-echo '    "BTC just dropped 5% — should I buy the dip or wait?"'
-echo '    "What are the odds that the Fed cuts rates in June?"'
-echo '    "Buy 100 USDC worth of ETH"'
-echo '    "Show my portfolio"'
+echo "  You can now use Minara for crypto trading, market data,"
+echo "  perpetual futures, and more. Try asking:"
+echo ""
+echo '  - "What are the top DeFi projects on Solana right now?"'
+echo '  - "Show my portfolio"'
+echo '  - "Buy 100 USDC worth of ETH"'
+echo '  - "Is NVDA still a good buy after the latest earnings?"'
+echo '  - "BTC just dropped 5% — should I buy the dip or wait?"'
+echo '  - "What are the odds that the Fed cuts rates in June?"'
 echo ""
