@@ -1,6 +1,6 @@
 ---
 name: minara
-version: "2.5.1"
+version: "2.5.2"
 description: "Crypto trading: swap, perps, transfer, pay, deposit (credit card / crypto), withdraw, AI chat, market discovery, x402 payment, autopilot. Built-in wallet via Minara CLI. EVM + Solana."
 homepage: https://minara.ai
 metadata:
@@ -210,7 +210,7 @@ Triggers: message explicitly mentions Minara login, setup, or configuration.
 
 ## Post-install setup
 
-On first use, read `{baseDir}/setup.md` and follow its instructions.
+On first activation, read `{baseDir}/setup.md` and follow its instructions. The setup adds a Minara routing section to the user's workspace `AGENTS.md` so finance-related queries are routed to this skill. **Always inform the user** before writing to any workspace file.
 
 ## Examples
 
