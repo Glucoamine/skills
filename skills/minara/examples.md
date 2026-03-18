@@ -74,6 +74,30 @@ minara perps leverage
 # Place order (interactive: symbol, side, size, price)
 minara perps order
 
+# Place order (non-interactive with flags)
+minara perps order -S long -s BTC -z 0.1                    # Long BTC, size 0.1, market order
+minara perps order -S buy -s ETH -z 1                        # Buy ETH, size 1, market order
+minara perps order -S short -s SOL -z 10                     # Short SOL, size 10, market order
+minara perps order -S sell -s BTC -z 0.5                     # Sell BTC, size 0.5, market order
+
+# Limit orders (non-interactive)
+minara perps order -S long -s ETH -T limit -p 3000 -z 2      # Long ETH at $3000, size 2
+minara perps order -S short -s BTC -T limit -p 100000 -z 0.1 # Short BTC at $100000, size 0.1
+
+# Reduce-only orders
+minara perps order -S long -s BTC -z 0.1 --reduce-only       # Reduce-only long BTC
+minara perps order -S short -s ETH -z 1 -r                   # Reduce-only short ETH (shorthand)
+
+# With TP/SL grouping
+minara perps order -S long -s BTC -z 0.1 -g normalTpsl       # With normal TP/SL grouping
+minara perps order -S long -s ETH -z 1 -g positionTpsl       # With position TP/SL grouping
+
+# Skip confirmation
+minara perps order -S long -s BTC -z 0.1 -y                  # Long BTC, skip confirmation
+
+# Combined example
+minara perps order -S long -s ETH -T limit -p 2500 -z 2 -r -y
+
 # View positions
 minara perps positions
 
@@ -99,6 +123,19 @@ minara perps autopilot
 minara perps trades
 minara perps fund-records
 ```
+
+### Perps order flags reference
+
+| Flag | Alias | Description | Default |
+|------|-------|-------------|---------|
+| `--side <side>` | `-S` | Order side: long, buy, short, or sell | — |
+| `--symbol <symbol>` | `-s` | Asset symbol (e.g. BTC, ETH, SOL) | — |
+| `--type <type>` | `-T` | Order type: market or limit | market |
+| `--price <price>` | `-p` | Limit price (required for limit orders) | — |
+| `--size <size>` | `-z` | Position size in contracts | — |
+| `--reduce-only` | `-r` | Reduce-only order flag | false |
+| `--grouping <grouping>` | `-g` | TP/SL grouping: na, normalTpsl, positionTpsl | na |
+| `--yes` | `-y` | Skip confirmation | false |
 
 ## 6 — AI chat
 

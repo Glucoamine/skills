@@ -87,22 +87,26 @@ Triggers: message mentions sending, transferring, paying, or withdrawing a crypt
 
 Triggers: message mentions perps, perpetual, futures, long, short, leverage, margin, or Hyperliquid.
 
-| User intent pattern                                                                       | Action                                                       |
-| ----------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| "open a long ETH perp", "short BTC on Hyperliquid", "place a perp order"                  | `minara perps order` (interactive order builder)             |
-| "analyze ETH long or short", "should I long BTC?", "AI perp analysis for SOL"             | `minara perps ask` — AI analysis with optional quick order   |
-| "enable AI autopilot for perps", "turn on autopilot trading", "manage autopilot strategy" | `minara perps autopilot`                                     |
-| "check my perp positions", "show my Hyperliquid positions"                                | `minara perps positions`                                     |
-| "close my perp position", "exit perps trade"                                              | `minara perps close` (interactive)                           |
-| "close all my perp positions", "exit all perps trades"                                    | `minara perps close --all`                                   |
-| "close BTC perp position", "exit ETH perps"                                               | `minara perps close --symbol <SYMBOL>`                       |
-| "set leverage to 10x for ETH perps"                                                       | `minara perps leverage`                                      |
-| "cancel my perp orders"                                                                   | `minara perps cancel`                                        |
-| "deposit USDC to perps account", "fund my Hyperliquid account"                            | `minara deposit perps` or `minara perps deposit -a <amount>` |
-| "withdraw USDC from perps"                                                                | `minara perps withdraw -a <amount>`                          |
-| "show my perp trade history"                                                              | `minara perps trades`                                        |
-| "show perps deposit/withdrawal records"                                                   | `minara perps fund-records`                                  |
+| User intent pattern                                                                       | Action                                                                                                    |
+| ----------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| "open a long ETH perp", "short BTC on Hyperliquid", "place a perp order"                  | `minara perps order` (interactive order builder)                                                          |
+| "long 0.1 BTC at market", "short ETH size 5", "buy SOL perp size 10"                      | `minara perps order -S <long/buy/short/sell> -s <SYMBOL> -z <size>` (non-interactive)                     |
+| "limit buy ETH at $3000 size 2", "limit short BTC at $95000"                              | `minara perps order -S buy -s ETH -T limit -p 3000 -z 2` (non-interactive limit order)                    |
+| "place reduce-only order for BTC", "reduce-only short SOL"                                | `minara perps order -S <side> -s <SYMBOL> -z <size> --reduce-only`                                        |
+| "analyze ETH long or short", "should I long BTC?", "AI perp analysis for SOL"             | `minara perps ask` — AI analysis with optional quick order                                                |
+| "enable AI autopilot for perps", "turn on autopilot trading", "manage autopilot strategy" | `minara perps autopilot`                                                                                  |
+| "check my perp positions", "show my Hyperliquid positions"                                | `minara perps positions`                                                                                  |
+| "close my perp position", "exit perps trade"                                              | `minara perps close` (interactive)                                                                        |
+| "close all my perp positions", "exit all perps trades"                                    | `minara perps close --all`                                                                                |
+| "close BTC perp position", "exit ETH perps"                                               | `minara perps close --symbol <SYMBOL>`                                                                    |
+| "set leverage to 10x for ETH perps"                                                       | `minara perps leverage`                                                                                   |
+| "cancel my perp orders"                                                                   | `minara perps cancel`                                                                                     |
+| "deposit USDC to perps account", "fund my Hyperliquid account"                            | `minara deposit perps` or `minara perps deposit -a <amount>`                                              |
+| "withdraw USDC from perps"                                                                | `minara perps withdraw -a <amount>`                                                                       |
+| "show my perp trade history"                                                              | `minara perps trades`                                                                                     |
+| "show perps deposit/withdrawal records"                                                   | `minara perps fund-records`                                                                               |
 
+> **Perps order flags:** `-S/--side` (long/buy/short/sell), `-s/--symbol` (BTC, ETH, SOL), `-T/--type` (market/limit, default: market), `-p/--price` (required for limit), `-z/--size` (contracts), `-r/--reduce-only`, `-g/--grouping` (na/normalTpsl/positionTpsl), `-y/--yes` (skip confirmation).
 > **Autopilot note:** When autopilot is ON, manual `minara perps order` is blocked. Turn off autopilot first via `minara perps autopilot`.
 
 ### Limit orders (crypto)
