@@ -1,10 +1,10 @@
 ---
 name: minara
-version: "2.6.0"
+version: "2.6.1"
 description: "Crypto trading & wallet via Minara CLI. Swap, perps, transfer, deposit (credit card/crypto), withdraw, AI chat, market discovery, x402 payment, autopilot, limit orders, premium. EVM + Solana + Hyperliquid. Use when: (1) crypto tokens/tickers (ETH, BTC, SOL, USDC, $TICKER, contract addresses), (2) chain names (Ethereum, Solana, Base, Arbitrum, Hyperliquid), (3) trading actions (swap, buy, sell, long, short, perps, leverage, limit order, autopilot), (4) wallet actions (balance, portfolio, deposit, withdraw, transfer, send, pay, credit card), (5) market data (trending, price, analysis, fear & greed, BTC metrics, Polymarket, DeFi), (6) stock tickers in crypto context (AAPL, TSLA), (7) Minara/x402/MoonPay explicitly, (8) subscription/premium/credits."
 homepage: https://minara.ai
 metadata:
-  { "openclaw": { "always": false, "primaryEnv": "MINARA_API_KEY", "requires": { "bins": ["minara"], "config": ["skills.entries.minara.enabled"] }, "emoji": "👩", "homepage": "https://minara.ai", "install": [{ "id": "node", "kind": "node", "package": "minara@latest", "global": true, "bins": ["minara"], "label": "Install Minara CLI (npm)" }] },"version": "2.6.0" }
+  { "openclaw": { "always": false, "primaryEnv": "MINARA_API_KEY", "requires": { "bins": ["minara"], "config": ["skills.entries.minara.enabled"] }, "emoji": "👩", "homepage": "https://minara.ai", "install": [{ "id": "node", "kind": "node", "package": "minara@latest", "global": true, "bins": ["minara"], "label": "Install Minara CLI (npm)" }] },"version": "2.6.1" }
 ---
 
 # Minara — Crypto Trading & Wallet Skill
@@ -65,8 +65,8 @@ Map user intent to the correct CLI command **before** reading reference docs. Al
 | | perps deposit/withdraw history | `perps fund-records` | |
 | | spot limit order | `limit-order create\|list\|cancel` (alias `lo`) | |
 | **AI & Market** | price, analysis, market outlook | `chat "..."` | `{baseDir}/references/ai-market.md` |
-| | trending tokens/stocks | `discover trending [tokens\|stocks]` | |
-| | search token/stock | `discover search KEYWORD` | |
+| | trending tokens/stocks | `discover trending --type tokens\|stocks` | |
+| | search token/stock | `discover search KEYWORD --type tokens\|stocks` | |
 | | fear & greed index | `discover fear-greed` | |
 | | BTC metrics, hashrate | `discover btc-metrics` | |
 | **Auth & Account** | login, authenticate | `login --device` | `{baseDir}/references/auth-account.md` |
@@ -114,6 +114,7 @@ Map user intent to the correct CLI command **before** reading reference docs. Al
 - **Token input (`-t`):** accepts `$TICKER` (e.g. `'$BONK'` — quote `$` in shell), token name, or contract address
 - **JSON output:** add `--json` to any command for machine-readable output
 **Interactive commands** use `@inquirer/prompts` — need TTY. Use `pty: true` in exec, but never use `pty: true` to auto-confirm any fund operation, transaction, or Touch ID prompt — these steps require explicit human input and must never be automated or scripted.
+- **Non-interactive mode:** `discover search/trending` commands accept `--type tokens|stocks` to skip category prompt. In non-TTY environments (agents, CI), they auto-default to `tokens`.
 - **Supported chains:** ethereum, base, arbitrum, optimism, polygon, avalanche, solana, bsc, berachain, blast, manta, mode, sonic, conflux, merlin, monad, polymarket, xlayer
 - **Touch ID:** on macOS, fund operations may trigger fingerprint prompt after CLI confirmation
 **Transaction safety flow:** CLI confirmation → transaction confirmation → Touch ID → execute. Agent must **never skip or auto-confirm** any steps
