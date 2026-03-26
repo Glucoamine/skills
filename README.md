@@ -1,12 +1,12 @@
 # Minara Skills v2.6
 
-Crypto trading and wallet operations for agents via the [Minara](https://minara.ai) CLI: swap, perps, transfer, deposit (crypto or credit card), withdraw, AI chat, market discovery, x402 payment, autopilot, limit orders, and premium features. Supports EVM, Solana, and Hyperliquid-based perps workflows.
+Crypto trading and wallet operations for agents via the [Minara](https://minara.ai) CLI: swap, perps, transfer, deposit (crypto), withdraw, AI chat, market discovery, x402 payment, autopilot, limit orders, and premium features. Supports EVM, Solana, and Hyperliquid-based perps workflows.
 
 ## Features
 
 | Capability                 | Description                                                                                                                                            |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Wallet & Funds**         | Built-in wallet, balance, portfolio, deposit addresses, spot/perps funding, withdrawals, transfers, and credit card on-ramp via MoonPay              |
+| **Wallet & Funds**         | Built-in wallet, balance, portfolio, deposit addresses, spot/perps funding, withdrawals, and transfers                                                |
 | **Spot Trading**           | Buy, sell, swap, convert, and transfer by ticker, token name, or contract address across supported chains                                              |
 | **Perpetual Futures**      | Open/close perps, manage leverage, wallets, transfers, trade history, and Hyperliquid workflows with AI-assisted execution                             |
 | **Limit Orders**           | Create, list, and cancel spot limit orders                                                                                                             |
@@ -117,7 +117,7 @@ Once the Minara skill is enabled, you talk to the OpenClaw agent in natural lang
 | Step           | What you want                                                        | Example prompts to the agent                                                                                      |
 | -------------- | -------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | **1. Login**   | Sign in to Minara (first time or new session)                        | _"Login to Minara"_ / _"Sign in to Minara"_ / _"Help me set up Minara"_                                           |
-| **2. Deposit** | Get an address to send funds, buy with card, or move USDC into perps | _"Show my Minara deposit address"_ / _"Buy crypto with credit card"_ / _"Deposit 500 USDC from my spot to perps"_ |
+| **2. Deposit** | Get an address to send funds or move USDC into perps | _"Show my Minara deposit address"_ / _"Deposit 500 USDC from my spot to perps"_ |
 | **3. Trade**   | Buy or sell tokens                                                   | _"Buy 100 USDC worth of ETH"_ / _"Swap 0.1 ETH to USDC"_ / _"Sell 50 SOL for USDC"_                               |
 
 After login, you can say for example: _"What's my Minara balance?"_ then _"Buy 50 USDC of BONK on Solana"_ — the agent will run the commands and show you the result.

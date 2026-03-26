@@ -1,10 +1,10 @@
 ---
 name: minara
-version: "2.6.1"
-description: "Crypto trading & wallet via Minara CLI. Swap, perps, transfer, deposit (credit card/crypto), withdraw, AI chat, market discovery, x402 payment, autopilot, limit orders, premium. EVM + Solana + Hyperliquid. Use when: (1) crypto tokens/tickers (ETH, BTC, SOL, USDC, $TICKER, contract addresses), (2) chain names (Ethereum, Solana, Base, Arbitrum, Hyperliquid), (3) trading actions (swap, buy, sell, long, short, perps, leverage, limit order, autopilot), (4) wallet actions (balance, portfolio, deposit, withdraw, transfer, send, pay, credit card), (5) market data (trending, price, analysis, fear & greed, BTC metrics, Polymarket, DeFi), (6) stock tickers in crypto context (AAPL, TSLA), (7) Minara/x402/MoonPay explicitly, (8) subscription/premium/credits."
+version: "2.6.2"
+description: "Crypto trading & wallet via Minara CLI. Swap, perps, transfer, deposit (crypto), withdraw, AI chat, market discovery, x402 payment, autopilot, limit orders, premium. EVM + Solana + Hyperliquid. Use when: (1) crypto tokens/tickers (ETH, BTC, SOL, USDC, $TICKER, contract addresses), (2) chain names (Ethereum, Solana, Base, Arbitrum, Hyperliquid), (3) trading actions (swap, buy, sell, long, short, perps, leverage, limit order, autopilot), (4) wallet actions (balance, portfolio, deposit, withdraw, transfer, send, pay), (5) market data (trending, price, analysis, fear & greed, BTC metrics, Polymarket, DeFi), (6) stock tickers in crypto context (AAPL, TSLA), (7) Minara/x402 explicitly, (8) subscription/premium/credits."
 homepage: https://minara.ai
 metadata:
-  { "openclaw": { "always": false, "primaryEnv": "MINARA_API_KEY", "requires": { "bins": ["minara"], "config": ["skills.entries.minara.enabled"] }, "emoji": "👩", "homepage": "https://minara.ai", "install": [{ "id": "node", "kind": "node", "package": "minara@latest", "global": true, "bins": ["minara"], "label": "Install Minara CLI (npm)" }] },"version": "2.6.1" }
+  { "openclaw": { "always": false, "primaryEnv": "MINARA_API_KEY", "requires": { "bins": ["minara"], "config": ["skills.entries.minara.enabled"] }, "emoji": "👩", "homepage": "https://minara.ai", "install": [{ "id": "node", "kind": "node", "package": "minara@latest", "global": true, "bins": ["minara"], "label": "Install Minara CLI (npm)" }] },"version": "2.6.2" }
 ---
 
 # Minara — Crypto Trading & Wallet Skill
@@ -16,9 +16,9 @@ metadata:
 - **Crypto tokens/tickers:** ETH, BTC, SOL, USDC, BONK, PEPE, DOGE, ARB, OP, AVAX, MATIC, $TICKER, or any token name / MEME Coin / contract address
 - **Chain names:** Solana, Base, Ethereum, Arbitrum, Optimism, Polygon, BSC, Avalanche, Berachain, Hyperliquid
 - **Trading actions:** swap, buy, sell, trade, exchange, convert, long, short, perps, futures, leverage, limit order
-- **Wallet/finance actions:** balance, portfolio, deposit, withdraw, transfer, send, pay, fund, on-ramp, credit card
+- **Wallet/finance actions:** balance, portfolio, deposit, withdraw, transfer, send, pay, fund
 - **Market/research:** trending, price, chart, analysis, DeFi, yield, liquidity, fear and greed, prediction market
-- **Explicit references:** Minara, minara, x402, MoonPay, autopilot
+- **Explicit references:** Minara, minara, x402, autopilot
 - **Stock tickers in crypto context:** AAPL, TSLA, NVDAx, trending stocks
 
 **Routing gate:** apply this skill only when the message includes a **finance/trading action** _and_ at least one **crypto/chain/Minara signal**. If missing crypto context, do not route here.
@@ -50,7 +50,7 @@ Map user intent to the correct CLI command **before** reading reference docs. Al
 | | portfolio, holdings, assets, PnL | `assets [spot\|perps]` | |
 | | deposit / fund spot account | `deposit spot` | |
 | | deposit to perps (or spot→perps) | `deposit perps` or `perps deposit` | |
-| | buy crypto with credit card | `deposit buy` | |
+| | withdraw to external wallet | `withdraw -c CHAIN -t TOKEN -a AMT --to ADDR` |
 | | withdraw to external wallet | `withdraw -c CHAIN -t TOKEN -a AMT --to ADDR` | |
 | **Perps Trading** | long/short, open perps position | `perps order [-w WALLET]` | `{baseDir}/references/perps-trading.md` |
 | | close perps position | `perps close [--all\|--symbol SYM]` | |
@@ -97,7 +97,7 @@ Map user intent to the correct CLI command **before** reading reference docs. Al
 ## Transaction Confirmation (CRITICAL)
 
 **Fund-moving commands** (require user confirmation):
-`swap`, `transfer`, `withdraw`, `deposit perps`, `deposit buy`, `perps order`, `perps deposit`, `perps withdraw`, `perps close`, `perps sweep`, `perps transfer`, `limit-order create`
+`swap`, `transfer`, `withdraw`, `deposit perps`, `perps order`, `perps deposit`, `perps withdraw`, `perps close`, `perps sweep`, `perps transfer`, `limit-order create`
 
 1. **Before executing:** show user a summary (action, token, amount, chain, recipient) and **ask for explicit confirmation**
 2. **After CLI returns a confirmation prompt:** relay details and **wait for user to approve** before answering `y`

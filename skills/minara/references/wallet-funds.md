@@ -10,7 +10,6 @@
 - [Assets](#minara-assets) — full spot + perps view
 - [Deposit Spot](#minara-deposit-spot) — show deposit addresses
 - [Deposit Perps](#minara-deposit-perps) — fund perps (address or Spot→Perps transfer)
-- [Deposit Buy](#minara-deposit-buy) — credit card on-ramp (MoonPay)
 - [Withdraw](#minara-withdraw) — withdraw to external wallet
 
 ---
@@ -95,7 +94,7 @@ Runs both spot + perps sequentially.
 
 ### `minara deposit`
 
-Interactive menu with 3 options: spot, perps, buy (credit card).
+Interactive menu with 2 options: spot, perps.
 
 #### `minara deposit spot`
 
@@ -146,27 +145,6 @@ $ minara deposit perps -a 100
 
 ⚠️ **Fund-moving command** — requires user confirmation before execution.
 
-#### `minara deposit buy`
-
-Credit card on-ramp via MoonPay. Opens browser.
-
-```
-$ minara deposit buy
-? Currency to buy: USDC (Base)
-
-Buy Crypto with Credit Card (MoonPay)
-  Currency : USDC (Base)
-  Wallet   : 0xAbC...123
-  ↑ Copy this address and paste it in MoonPay when prompted.
-
-ℹ Opening MoonPay in your browser…
-```
-
-Available currencies: USDC (Base/Ethereum/Arbitrum/Polygon), ETH, ETH (Base), SOL.
-
-**Errors:**
-- `No wallet address found` → account not fully initialized
-- `No deposit addresses found` → run `minara login` first, or visit minara.ai
 
 ---
 

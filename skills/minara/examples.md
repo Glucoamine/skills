@@ -57,10 +57,11 @@ minara assets perps            # Perps: equity, margin, positions
 minara assets spot --json      # JSON output
 
 # Deposit
-minara deposit                 # Interactive: Spot / Perps / Buy with credit card
+minara deposit                 # Interactive: Spot / Perps
 minara deposit spot            # Show spot deposit addresses (EVM + Solana)
 minara deposit perps           # Perps: show Arbitrum address, or transfer Spot → Perps
-minara deposit buy             # Buy crypto with credit card via MoonPay (opens browser)
+minara deposit perps --address # Show perps deposit address (non-interactive)
+minara deposit perps -a 100    # Transfer 100 USDC from Spot → Perps
 ```
 
 ## 5 — Perpetual futures
@@ -222,8 +223,7 @@ minara transfer
 #    → Chain: base
 
 # 3. Ensure wallet is funded for future x402 payments
-minara deposit buy                 # Credit card on-ramp via MoonPay
-minara deposit spot                # Or show deposit addresses to receive crypto
+minara deposit spot                # Show deposit addresses to receive crypto
 ```
 
 ## 10 — Premium & subscription
