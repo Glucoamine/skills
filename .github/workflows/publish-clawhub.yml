@@ -21,5 +21,6 @@ jobs:
         env:
           CLAWHUB_TOKEN: ${{ secrets.CLAWHUB_TOKEN }}
         run: |
+          clawhub login --token "$CLAWHUB_TOKEN"
           VERSION="${GITHUB_REF_NAME#v}"
           clawhub publish skills/minara --slug minara --version "$VERSION"
