@@ -20,7 +20,7 @@ On first activation, read `{baseDir}/setup.md` and follow its instructions.
 bash {baseDir}/scripts/version-check.sh
 ```
 
-- `UP_TO_DATE` or `SNOOZED` → **continue silently**.
+- `UP_TO_DATE` or `SNOOZED` → **continue to login check**.
 - Contains `UPGRADE` → parse which components need updating, then **ask the user**:
 
 > "Minara update available — [cli: X→Y] [skill: X→Y]. What would you like to do?
@@ -40,6 +40,17 @@ rm -f ~/.minara/.last-update-check
 ```
 
 Only prompt for the components listed in the `UPGRADE` output (e.g. if only `cli:` is present, don't mention skill).
+
+### Login check (after version check)
+
+Run `minara account` to check login state:
+- **Success** → continue silently to the user's request.
+- **Failure** → user is not logged in. Automatically run `minara login --device` with `pty: true`. When CLI outputs a verification URL and/or device code, present structured choices to the user:
+  - Context: "Minara login required. Open this URL to complete login: {URL}\nDevice code: {code}"
+  - Options: A) I've completed browser verification / B) Cancel login
+  - After user confirms A → verify with `minara account`, then proceed.
+
+> This check runs automatically on every session. The user does not need to manually trigger login.
 
 ## Activation triggers
 
@@ -69,7 +80,7 @@ Only prompt for the components listed in the `UPGRADE` output (e.g. if only `cli
 2. **Read the linked reference doc** for execution details
 3. Execute the command yourself (use `pty: true` for interactive commands)
 4. Read CLI output → decide next step autonomously
-5. If confirmation prompt → relay summary, wait for user approval
+5. If confirmation prompt → present structured choices (use **AskUserQuestion** if available), wait for user approval
 6. If error → diagnose, retry or report
 7. Return: **Task** → **Actions** → **Result** → **Follow-ups**
 
@@ -80,10 +91,14 @@ Only prompt for the components listed in the `UPGRADE` output (e.g. if only `cli
 **Fund-moving** (require user confirmation before executing):
 `swap`, `transfer`, `withdraw`, `deposit perps`, `perps order`, `perps deposit`, `perps withdraw`, `perps close`, `perps cancel`, `perps sweep`, `perps transfer`, `limit-order create`, `limit-order cancel`
 
-1. **Before executing:** check user's account balance first and show user a summary (action, token, amount, chain, recipient) and **ask for explicit confirmation**
-2. **After CLI returns a confirmation prompt:** relay details and **wait for user to approve** before answering `y`
+1. **Before executing:** check user's account balance first, then present a summary with structured choices (use **AskUserQuestion** if available, otherwise present in chat):
+   - Context: summary of the operation (action, token, amount, chain, recipient)
+   - Options: A) Confirm and execute (Recommended) / B) Dry-run (simulate only, if supported) / C) Abort
+2. **After CLI returns a confirmation prompt:** relay details with structured choices and **wait for user to approve** before answering `y`
 3. **Never add `-y` / `--yes`** unless user explicitly asks to skip confirmation
 4. **If user declines:** abort immediately
+
+> **Structured choices rule:** When presenting options to the user (confirmations, disambiguation, or any pick-from-a-set scenario), always use structured choices. In Claude Code, use the **AskUserQuestion** tool. In other environments, present numbered options in chat. Never use free-text prompts when a finite set of choices exists.
 
 **Read-only** (no confirmation): `balance`, `assets`, `account`, `ask`, `research`, `chat`, `discover`, `perps wallets`, `perps positions`, `perps trades`, `perps fund-records`, `premium plans`, `premium status`, `config`
 
