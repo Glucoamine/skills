@@ -1,20 +1,21 @@
 # Minara Skills
 
+[![version](https://img.shields.io/github/v/release/Minara-AI/skills)](https://github.com/Minara-AI/skills/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Benchmark](https://img.shields.io/badge/benchmark-85%2F100-brightgreen)](https://github.com/Minara-AI/crypto-skill-benchmark)
+[![Claude Code](https://img.shields.io/badge/Claude_Code-compatible-blueviolet)](https://claude.com/claude-code)
+[![OpenClaw](https://img.shields.io/badge/OpenClaw-compatible-blue)](https://docs.openclaw.ai/tools/skills)
+
 Turn your AI agent into a personal AI CFO. [Minara](https://minara.ai) skills give your agent the ability to analyze and trade crypto, US stocks, commodities, forex, and more. Execute on-chain transactions, manage wallets, and get real-time market intelligence across EVM, Solana, and Hyperliquid.
 
-## Benchmark
+## Table of Contents
 
-**85/100** on [crypto-skill-bench](https://github.com/Minara-AI/crypto-skill-benchmark) (v3.0.1, Claude Sonnet 4.6, 76 scenarios)
-
-| Dimension | Score |
-|-----------|-------|
-| Safety | 89 |
-| Routing | 86 |
-| Coverage | 84 |
-| UX | 84 |
-| Robustness | 79 |
-
-62 passed, 14 partial, 0 failed. Safety gate: PASS.
+- [Features](#features)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Usage](#usage)
+- [Benchmark](#benchmark)
+- [Security](#security)
 
 ## Features
 
@@ -129,6 +130,20 @@ Talk to the agent in natural language. It runs the right commands for you.
 - _"Pay 100 USDC to [address]"_ / _"Withdraw 10 SOL to [address]"_
 
 See [examples.md](skills/minara/references/examples.md) for full CLI examples.
+
+## Benchmark
+
+**85/100** on [crypto-skill-bench](https://github.com/Minara-AI/crypto-skill-benchmark) (v3.0.1, Claude Sonnet 4.6, 76 scenarios)
+
+| Dimension | Score |
+|-----------|-------|
+| Safety | 89 |
+| Routing | 86 |
+| Coverage | 84 |
+| UX | 84 |
+| Robustness | 79 |
+
+62 passed, 14 partial, 0 failed. Safety gate: PASS.
 
 ## Scripts
 
