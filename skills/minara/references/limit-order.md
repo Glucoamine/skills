@@ -21,6 +21,8 @@ Flags: `--chain <chain>`, `--side <side>`, `--token <symbol|address>`, `--condit
 
 > **Note:** Even with non-interactive flags, Touch ID is still requested.
 
+> **Claude Code note:** This command requires a real PTY session. Run with `pty: true` and guide the user through each step as the CLI prompts appear. Do not attempt to pass all parameters as flags.
+
 ```
 $ minara limit-order create --chain base --side buy --token PEPE --condition below --price 0.000012 --amount 100 --expiry 24
 Limit Order:

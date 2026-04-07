@@ -243,6 +243,7 @@ Match user intent → read the **Reference** for full execution flow. All CLI co
 | "deposit address", "how do I receive crypto?", "receive" | `deposit spot` | `{baseDir}/references/deposit.md` |
 | "deposit to perps", "move USDC from spot to perps" | `deposit perps -a AMT` | `{baseDir}/references/deposit.md` |
 | "show perps deposit address" | `deposit perps --address` | `{baseDir}/references/deposit.md` |
+| "buy crypto with credit card", "on-ramp with card", "deposit with MoonPay" | `deposit buy` | `{baseDir}/references/deposit.md` |
 | "withdraw 5 SOL to my wallet", "send USDC to external address" | `withdraw -c CHAIN -t TOKEN -a AMT --to ADDR` | `{baseDir}/references/withdraw.md` |
 
 ### Account & premium
