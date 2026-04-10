@@ -1,6 +1,6 @@
 
 <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; margin: 20px auto; width: fit-content;">
-  <h1 style="margin: 0; line-height: 1.2; border: none; text-align: center;">Minara Skills</h1>
+  <h1 align="center"; style="margin: 0; line-height: 1.2; border: none; text-align: center;">Minara Skills</h1>
   <img src="assets/minara_banner.png" alt="Xneuro" width=100% style="display: block;">
 </div>
 
@@ -210,7 +210,8 @@ This repo contains documentation files and setup scripts. No binaries or long-ru
 
 ## Agent Compatible With
 
-<table align="center" style="margin: auto; border: 0 !important; border-collapse: collapse; border-spacing: 0;">
+ <table style="margin: 0; border: 0 !important; border-collapse: collapse; 
+  border-spacing: 0;"> 
   <tr>
     <td style="vertical-align: middle; padding-right: 16px; border: 0 !important;">
       <img src="assets/claudecode-color.png" alt="Claude Code" height="60">
