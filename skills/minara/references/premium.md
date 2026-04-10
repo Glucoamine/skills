@@ -9,7 +9,6 @@
 | View plans | `minara premium plans` | read-only |
 | Subscription status | `minara premium status` | read-only |
 | Subscribe / change plan | `minara premium subscribe` | opens browser |
-| Buy credit package | `minara premium buy-credits` | opens browser |
 | Cancel subscription | `minara premium cancel` | destructive |
 
 **Default (no subcommand):** interactive submenu.
@@ -47,10 +46,6 @@ Interactive: plan → payment method (Stripe / crypto USDC) → confirm → brow
 ```
 
 Relay the checkout URL to user.
-
-## `minara premium buy-credits`
-
-Interactive only (no CLI flags for amount). Prompts user to pick a credit package, then opens browser checkout. If the user specifies an amount (e.g. "buy 100 credits"), run the command interactively and let the CLI guide package selection.
 
 ## `minara premium cancel`
 

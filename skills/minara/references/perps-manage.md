@@ -69,14 +69,17 @@ Cancel an open perps order. Interactive picker if no specific order.
 
 ## `minara perps leverage`
 
-Interactive: select asset → leverage (1–max) → margin mode (cross/isolated).
+Can be run interactively or with non-interactive flags.
+Options: `-s, --symbol <TOKEN>` (target token), `-l, --leverage <VALUE>` (leverage multiplier), `-w, --wallet <name>`.
+
+When both `-s` and `-l` are provided, it defaults to cross margin mode.
 
 ```
-? Asset: ETH $3,200 max 50x
-? Leverage (1–50x): 20
-? Margin mode: Cross
+$ minara perps leverage -s ETH -l 20
 ✔ Leverage set to 20x (cross) for ETH
 ```
+
+If flags are missing, it falls back to an Interactive prompt: select asset → leverage (1–max) → margin mode (cross/isolated).
 
 ## `minara perps trades`
 

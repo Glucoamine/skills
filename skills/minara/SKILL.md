@@ -245,7 +245,6 @@ Match user intent → read the **Reference** for full execution flow. All CLI co
 | "show perps deposit address" | `deposit perps --address` | `{baseDir}/references/deposit.md` |
 | "buy crypto with credit card", "on-ramp with card", "deposit with MoonPay" | `deposit buy` | `{baseDir}/references/deposit.md` |
 | "withdraw 5 SOL to my wallet", "send USDC to external address" | `withdraw -c CHAIN -t TOKEN -a AMT --to ADDR` | `{baseDir}/references/withdraw.md` |
-| "buy crypto with credit card", "on-ramp with card", "deposit with MoonPay" | `deposit buy` | `{baseDir}/references/deposit.md` |
 
 ### Account & premium
 
@@ -255,7 +254,7 @@ Match user intent → read the **Reference** for full execution flow. All CLI co
 | "logout", "sign out", "disconnect" | `logout` | `{baseDir}/references/auth.md` |
 | "my account", "wallet address", "who am I" | `account [--show-all]` | `{baseDir}/references/auth.md` |
 | "setup minara", "configure", "install" | read `{baseDir}/setup.md` | `{baseDir}/references/auth.md` |
-| "subscription plans", "upgrade to Pro", "buy credits", "cancel subscription" | `premium plans\|status\|subscribe\|buy-credits\|cancel` | `{baseDir}/references/premium.md` |
+| "subscription plans", "upgrade to Pro", "cancel subscription" | `premium plans\|status\|subscribe\|cancel` | `{baseDir}/references/premium.md` |
 
 ## UX rules
 
