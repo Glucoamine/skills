@@ -270,7 +270,7 @@ Match user intent → read the **Reference** for full execution flow. All CLI co
 
 - **Token input:** `'$BONK'` (quote `$`), ticker, address, or name
 - **JSON output:** `--json` on root command
-- **Interactive commands:** use `pty: true` — never use it to auto-confirm
+- **Interactive commands:** use `pty: true` — never use it to auto-confirm. Full bypass guide: `{baseDir}/references/interactive-commands.md`
 - **Non-interactive discover:** `--type tokens|stocks` skips category prompt
 - **Non-interactive perps order:** `-S SIDE -s SYMBOL -z SIZE` skips all prompts
 - **Supported chains:** ethereum, base, arbitrum, optimism, polygon, avalanche, solana, bsc, berachain, blast, manta, mode, sonic, conflux, merlin, monad, polymarket, xlayer
